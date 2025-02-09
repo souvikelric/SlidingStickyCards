@@ -2,6 +2,10 @@ import { Ref, useLayoutEffect, useRef } from "react";
 import styles from "./sticky.module.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image1 from "../../assets/1.jpg";
+import Image2 from "../../assets/2.jpg";
+import Image3 from "../../assets/3.jpg";
+import Image4 from "../../assets/4.jpg";
 
 
 export type cardDataType = {
@@ -11,10 +15,10 @@ export type cardDataType = {
 }
 
 const cardData:cardDataType[] = [
-  {"h1":"First Card","h3":"First card subInfo","img":"https://images.unsplash.com/photo-1738848392298-cf0b62edc750?q=80&w=1886&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"},
-  {"h1":"Second Card","h3":"Second card subInfo","img":"https://images.unsplash.com/photo-1738848392298-cf0b62edc750?q=80&w=1886&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"},
-  {"h1":"Third Card","h3":"Third card subInfo","img":"https://images.unsplash.com/photo-1738848392298-cf0b62edc750?q=80&w=1886&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"},
-  {"h1":"Fourth Card","h3":"Fourth card subInfo","img":"https://images.unsplash.com/photo-1738848392298-cf0b62edc750?q=80&w=1886&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"},
+  {"h1":"First Card","h3":"First card subInfo","img":Image1},
+  {"h1":"Second Card","h3":"Second card subInfo","img":Image2},
+  {"h1":"Third Card","h3":"Third card subInfo","img":Image3},
+  {"h1":"Fourth Card","h3":"Fourth card subInfo","img":Image4},
 ]
 
 
@@ -91,7 +95,7 @@ const Sticky = () => {
           opacity:1,
           scale:1,
           filter:"grayscale(0%)",
-          borderRadius:"40px"
+          borderRadius:"40px",
         })
 
 
@@ -113,7 +117,9 @@ const Sticky = () => {
                             <div style={{overflow:"hidden"}}><h3>{card.h3}</h3></div>
                           </div>
                           <div className={styles.col2}>
-                            <img src={card.img} alt="coverImage" />
+                            <div className={styles.imgWrapper}>
+                              <img src={card.img} alt="coverImage" />
+                            </div>
                           </div>
                         </div>
                         )
