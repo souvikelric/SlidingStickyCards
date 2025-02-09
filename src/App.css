@@ -1,0 +1,34 @@
+
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        /* overflow-x:hidden; */
+    }
+
+    html,body{
+        width: 100%;
+        height: 100%;
+    }
+
+    .page-container{
+        height: 100%;
+        width:100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        h1{
+            font-size: 12vw;
+            text-align: center;
+            text-transform: uppercase;
+            color: #111;
+            letter-spacing: -0.7vw;
+        }
+    }
+
+    .spacer{
+        height: 60vh;
+    }
+    
