@@ -11,12 +11,13 @@ import Image4 from "../../assets/4.jpg";
 export type cardDataType = {
   h1:string,
   h3:string,
-  img:string
+  img:string,
+  bgColor?:string
 }
 
 const cardData:cardDataType[] = [
-  {"h1":"First Card","h3":"First card subInfo","img":Image1},
-  {"h1":"Second Card","h3":"Second card subInfo","img":Image2},
+  {"h1":"First Card","h3":"First card subInfo","img":Image1,bgColor:"rgb(225, 53, 106)"},
+  {"h1":"Second Card","h3":"Second card subInfo","img":Image2,bgColor:"rgb(27, 117, 102)"},
   {"h1":"Third Card","h3":"Third card subInfo","img":Image3},
   {"h1":"Fourth Card","h3":"Fourth card subInfo","img":Image4},
 ]
@@ -111,7 +112,8 @@ const Sticky = () => {
                     {   
                       let optionRef = index === 0 ? contRef : null;
                       return (
-                        <div key={index} ref={optionRef} className={styles.containerCard}>
+                        <div key={index} ref={optionRef} style={{backgroundColor:card.bgColor}}
+                        className={styles.containerCard}>
                           <div className={styles.col1}>
                             <div style={{overflow:"hidden"}}><h1>{card.h1}</h1></div>
                             <div style={{overflow:"hidden"}}><h3>{card.h3}</h3></div>
