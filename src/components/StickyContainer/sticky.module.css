@@ -7,6 +7,7 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 5vh;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
 
     & .col1, .col2{
         width: 50%;
@@ -21,6 +22,18 @@
             width: 90%;
             object-fit: cover;
         }
+    }
+
+    .col1{
+        position: absolute;
+        left: 0%;
+    }
+
+    .col2{
+        position: absolute;
+        left: 50%;
+        /* border-top-right-radius: 16px;
+        border-bottom-right-radius: 16px; */
     }
 
 

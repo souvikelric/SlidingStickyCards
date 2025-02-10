@@ -18,14 +18,15 @@ export type cardDataType = {
 const cardData:cardDataType[] = [
   {"h1":"First Card","h3":"First card subInfo","img":Image1,bgColor:"rgb(225, 53, 106)"},
   {"h1":"Second Card","h3":"Second card subInfo","img":Image2,bgColor:"rgb(27, 117, 102)"},
-  {"h1":"Third Card","h3":"Third card subInfo","img":Image3},
-  {"h1":"Fourth Card","h3":"Fourth card subInfo","img":Image4},
+  {"h1":"Third Card","h3":"Third card subInfo","img":Image3,bgColor:"rgb(28, 107, 159)"},
+  {"h1":"Fourth Card","h3":"Fourth card subInfo","img":Image4,bgColor:"rgb(137, 90, 191)"},
 ]
 
 
 const Sticky = () => {
     const gridRef:Ref<HTMLDivElement> = useRef(null);
     const contRef :Ref<HTMLDivElement> = useRef(null);
+    const col2Ref :Ref<HTMLDivElement> = useRef(null);
 
     const gsapFromTo = (element:HTMLElement | null,trigger:Element,
       offset:number=0
@@ -39,7 +40,6 @@ const Sticky = () => {
           start:"top 58%",
           end:`${70 + offset}% 60%`,
           scrub:true,
-          // markers:true,
           toggleActions:"play complete none reverse"
         },
         opacity:1,
@@ -76,6 +76,7 @@ const Sticky = () => {
         let cntH1 = container.querySelector('h1');
         let cntH3 = container.querySelector('h3');
         let img = container.querySelector('img');
+        let col2 = container.querySelector(`.${styles.col2}`)
 
         gsapFromTo(cntH1,container);
         gsapFromTo(cntH3,container,10);
@@ -90,7 +91,6 @@ const Sticky = () => {
             start:"top 58%",
             end:`${70}% 60%`,
             scrub:1.5,
-            // markers:true,
             toggleActions:"play complete none reverse"
           },
           opacity:1,
@@ -99,7 +99,24 @@ const Sticky = () => {
           borderRadius:"40px",
         })
 
-
+        if(col2 !== null ){
+          gsap.fromTo(col2,{
+            borderTopRightRadius:0,
+            borderBottomRightRadius:0,
+            opacity:0.8
+          },{
+            scrollTrigger:{
+              trigger:container,
+              start:"top 58%",
+              end:`${70}% 60%`,
+              scrub:1.5,
+              toggleActions:"play complete none reverse"
+            },
+            borderTopRightRadius:"16px",
+            borderBottomRightRadius:"16px",
+            opacity:1
+          })
+        }
 
 
       })
@@ -112,13 +129,13 @@ const Sticky = () => {
                     {   
                       let optionRef = index === 0 ? contRef : null;
                       return (
-                        <div key={index} ref={optionRef} style={{backgroundColor:card.bgColor}}
+                        <div key={index} ref={optionRef} style={{backgroundColor:"white"}}
                         className={styles.containerCard}>
                           <div className={styles.col1}>
                             <div style={{overflow:"hidden"}}><h1>{card.h1}</h1></div>
                             <div style={{overflow:"hidden"}}><h3>{card.h3}</h3></div>
                           </div>
-                          <div className={styles.col2}>
+                          <div ref={col2Ref} className={styles.col2} style={{backgroundColor:card.bgColor}}>
                             <div className={styles.imgWrapper}>
                               <img src={card.img} alt="coverImage" />
                             </div>
