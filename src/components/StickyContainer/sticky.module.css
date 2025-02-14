@@ -7,6 +7,7 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 5vh;
+    padding: 5px;
     box-shadow: 0 0 15px rgba(0,0,0,0.5);
 
     & .col1, .col2{
@@ -18,7 +19,7 @@
         justify-content: center;
 
         & img{
-            height: 90%;
+            height: 100%;
             width: 90%;
             object-fit: cover;
         }
@@ -38,8 +39,8 @@
 
 
     .imgWrapper{
-        max-height: 90%;
-        width: 90%;
+        max-height: 100%;
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -78,9 +79,9 @@
 .containerCard:nth-of-type(3){
     background-color: rgb(178, 196, 223);  
 
-    & .imgWrapper{
+    /* & .imgWrapper{
         padding: 30px;
-    }
+    } */
 }
 
 .containerCard:nth-of-type(4){
@@ -89,14 +90,14 @@
         font-size: 6vw;
     }
 
-    & .imgWrapper{
+    /* & .imgWrapper{
         padding: 30px;
-    }
+    } */
 }
 
 .grid{
     width:100%;
-    background-color: rgb(232, 232, 232);
+    background-color: #e0b1ef;
     padding: 1em;
     left:0%;
     position: relative;

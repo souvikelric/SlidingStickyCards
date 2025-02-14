@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import './App.css'
 import Sticky from './components/StickyContainer/sticky';
 import Lenis from 'lenis';
+import Header from './components/Header/header';
 
 function App() {
 
@@ -30,7 +31,9 @@ function App() {
 
   return (
             <div className="page-container">
-                <div className="spacer"></div>
+                <div className="spacer">
+                  <Header/>
+                </div>
                 <Sticky/>
                 <div className="spacer"></div>
             </div>

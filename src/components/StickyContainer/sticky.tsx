@@ -2,10 +2,16 @@ import { Ref, useLayoutEffect, useRef } from "react";
 import styles from "./sticky.module.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image1 from "../../assets/1.jpg";
-import Image2 from "../../assets/2.jpg";
-import Image3 from "../../assets/3.jpg";
-import Image4 from "../../assets/4.jpg";
+// import Image1 from "../../assets/1.jpg";
+// import Image2 from "../../assets/2.jpg";
+// import Image3 from "../../assets/3.jpg";
+// import Image4 from "../../assets/4.jpg";
+
+const Image1 = "https://images.unsplash.com/photo-1494500764479-0c8f2919a3d8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+const Image2 = "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+const Image3 = "https://plus.unsplash.com/premium_photo-1676385777209-1d435cc69c5a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+const Image4 = "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+
 
 
 export type cardDataType = {
@@ -55,28 +61,42 @@ const Sticky = () => {
     // console.log(contClassName);
 
     if(grid!==null){
+      
       const containers = grid.querySelectorAll(`.${contClassName}`);
 
       containers.forEach((container,index)=> {
+        let cntH1 = container.querySelector('h1');
+        let cntH3 = container.querySelector('h3');
+        let img = container.querySelector('img');
+        let col2 = container.querySelector(`.${styles.col2}`)
 
-        gsap.to(container,{
+
+        let tl = gsap.timeline()
+
+        tl.to(container,{
           scrollTrigger:{
             trigger:container,
-            start:"top 50%",
-            end:"bottom 60%",
+            start:"top 60%",
+            end:"top 30%",
             scrub:true,
-            // markers:true,
             toggleActions:"play complete reverse none"
           },
           scale:0.85,
           borderRadius:'40px',
           position:"sticky",
           top:`${index*10}px`
-        })
-        let cntH1 = container.querySelector('h1');
-        let cntH3 = container.querySelector('h3');
-        let img = container.querySelector('img');
-        let col2 = container.querySelector(`.${styles.col2}`)
+        },"<")
+        .to(col2,{
+            scrollTrigger:{
+              trigger:container,
+              start:"top 60%",
+              end:"top 30%",
+              scrub:true,
+              toggleActions:"play complete reverse none"
+            },
+            borderTopRightRadius:'40px',
+            borderBottomRightRadius:'40px'
+        },"<")
 
         gsapFromTo(cntH1,container);
         gsapFromTo(cntH3,container,10);
@@ -87,9 +107,9 @@ const Sticky = () => {
           scale:0.7,
         },{
           scrollTrigger:{
-            trigger:container,
-            start:"top 58%",
-            end:`${70}% 60%`,
+            trigger:img,
+            start:"top 50%",
+            end:"top 30%",
             scrub:1.5,
             toggleActions:"play complete none reverse"
           },
@@ -98,26 +118,6 @@ const Sticky = () => {
           filter:"grayscale(0%)",
           borderRadius:"40px",
         })
-
-        if(col2 !== null ){
-          gsap.fromTo(col2,{
-            borderTopRightRadius:0,
-            borderBottomRightRadius:0,
-            opacity:0.8
-          },{
-            scrollTrigger:{
-              trigger:container,
-              start:"top 58%",
-              end:`${70}% 60%`,
-              scrub:1.5,
-              toggleActions:"play complete none reverse"
-            },
-            borderTopRightRadius:"16px",
-            borderBottomRightRadius:"16px",
-            opacity:1
-          })
-        }
-
 
       })
 
